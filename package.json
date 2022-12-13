@@ -8,7 +8,7 @@
         "start": "next start",
         "test:visual": "npx happo-e2e -- cypress run --spec 'cypress/integration/visual.spec.js'",
         "test:jest": "jest",
-        "test.lighthouse.ci": "npx cypress run --spec '**/integration/homepage.spec.js' --browser=chrome",
+        "test:lighthouse.ci": "npx cypress run --spec '**/integration/homepage.spec.js' --browser=chrome",
         "test.lighthouse": "npx cypress run --spec '**/integration/homepage.spec.js' --browser=chrome --headed",
         "happo": "happo",
         "happo-ci-github-actions": "happo-ci-github-actions"

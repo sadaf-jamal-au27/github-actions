@@ -7,7 +7,7 @@ on:
     - 'dev-portfolio/**'
     - '.github/workflows/test.yml'
     # Don't run on Markdown changes
-    - '!**.md'
+    #- '!**.md'
     branches: [ dev-portfolio ]
   pull_request:
   # Only trigger if files in this path changed
@@ -15,18 +15,18 @@ on:
     - 'dev-portfolio/**'
     - '.github/workflows/test.yml'
     # Don't run on Markdown changes
-    - '!**.md'
-    branches: [  ]
+    #- '!**.md'
+    branches: [ dev-portfolio ]
 
 jobs:
   build:
-    defaults:
-      run:
-        working-directory: dev-portfolio/
+    #defaults:
+      #run:
+       # working-directory: dev-portfolio/
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v2
@@ -45,10 +45,10 @@ jobs:
     - name: Build the app for prod 🏗
       run: |
         ls -a
-        npm run build && npm run start
+        npm run build && npm run start &
     - name: Run front-end perf
       run: |
-        npm run test:lighthouse
+        npm run test.lighthouse
     - name: Run visual tests 👁
       run: |
         npm run test:visual
