@@ -7,7 +7,7 @@ on:
     - 'dev-portfolio/**'
     - '.github/workflows/test.yml'
     # Don't run on Markdown changes
-    - '!**.md'
+    #- '!**.md'
     branches: [ dev-portfolio ]
   pull_request:
   # Only trigger if files in this path changed
@@ -15,8 +15,8 @@ on:
     - 'dev-portfolio/**'
     - '.github/workflows/test.yml'
     # Don't run on Markdown changes
-    - '!**.md'
-    branches: [  ]
+    #- '!**.md'
+    branches: [ dev-portfolio ]
 
 jobs:
   build:
