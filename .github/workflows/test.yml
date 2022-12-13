@@ -1,0 +1,54 @@
+name: Dev Portfolio CI
+
+on:
+  push:
+  # Only trigger if files in this path changed
+    paths:
+    - 'dev-portfolio/**'
+    - '.github/workflows/test.yml'
+    # Don't run on Markdown changes
+    - '!**.md'
+    branches: [ dev-portfolio ]
+  pull_request:
+  # Only trigger if files in this path changed
+    paths:
+    - 'dev-portfolio/**'
+    - '.github/workflows/test.yml'
+    # Don't run on Markdown changes
+    - '!**.md'
+    branches: [  ]
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: dev-portfolio/
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies 📦
+      #Using npm ci is generally faster than running npm install
+      run: |
+        ls -a
+        npm ci
+    - name: Unit tests
+      run: |
+        npm run test:jest
+    - name: Build the app for prod 🏗
+      run: |
+        ls -a
+        npm run build && npm run start
+    - name: Run front-end perf
+      run: |
+        npm run test:lighthouse
+    - name: Run visual tests 👁
+      run: |
+        npm run test:visual
