@@ -48,7 +48,7 @@ jobs:
         npm run build && npm run start &
     - name: Run front-end perf
       run: |
-        npm run test.lighthouse
+        npm run test:lighthouse
     - name: Run visual tests 👁
       run: |
         npm run test:visual
