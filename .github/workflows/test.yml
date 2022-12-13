@@ -20,8 +20,8 @@ on:
 
 jobs:
   build:
-    defaults:
-      run:
+    #defaults:
+      #run:
        # working-directory: dev-portfolio/
     runs-on: ubuntu-latest
     strategy:
