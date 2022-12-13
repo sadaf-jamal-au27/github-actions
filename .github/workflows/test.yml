@@ -22,7 +22,7 @@ jobs:
   build:
     defaults:
       run:
-        working-directory: dev-portfolio/
+       # working-directory: dev-portfolio/
     runs-on: ubuntu-latest
     strategy:
       matrix:
